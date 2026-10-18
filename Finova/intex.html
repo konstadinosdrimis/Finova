@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b16">
+  <meta name="description" content="Finova — Personal Finance Dashboard">
+  <title>Finova | Finance Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Finova home">
+        <span class="brand-icon">F</span>
+        <span>finova<span class="brand-dot">.</span></span>
+      </a>
+
+      <p class="nav-label">WORKSPACE</p>
+      <nav>
+        <a class="nav-link active" href="#dashboard">▦ Dashboard</a>
+        <a class="nav-link" href="#transactions">↔ Transactions</a>
+        <a class="nav-link" href="#add-transaction">＋ Add transaction</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <span class="status-dot"></span>
+        <span>All systems operational</span>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">YOUR MONEY, YOUR CONTROL</p>
+          <h1>Dashboard<span class="accent">.</span></h1>
+        </div>
+        <div class="avatar">F</div>
+      </header>
+
+      <section class="welcome">
+        <div>
+          <p class="muted">YOUR FINANCIAL OVERVIEW</p>
+          <h2>Make your money <span>work smarter.</span></h2>
+          <p class="muted">Track your progress, one transaction at a time.</p>
+        </div>
+        <div class="welcome-orb" aria-hidden="true">✳</div>
+      </section>
+
+      <section class="stats-grid" aria-label="Financial summary">
+        <article class="stat-card balance-card">
+          <div class="card-top">
+            <span>Total balance</span>
+            <span class="stat-icon purple">◈</span>
+          </div>
+          <p class="stat-value" id="balance">€0.00</p>
+          <p class="stat-foot">Income minus expenses</p>
+        </article>
+
+        <article class="stat-card">
+          <div class="card-top">
+            <span>Total income</span>
+            <span class="stat-icon cyan">↙</span>
+          </div>
+          <p class="stat-value" id="income">€0.00</p>
+          <p class="stat-foot">Money coming in</p>
+        </article>
+
+        <article class="stat-card">
+          <div class="card-top">
+            <span>Total expenses</span>
+            <span class="stat-icon pink">↗</span>
+          </div>
+          <p class="stat-value" id="expenses">€0.00</p>
+          <p class="stat-foot">Money going out</p>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel chart-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">YOUR ACTIVITY</p>
+              <h3>Cash flow</h3>
+            </div>
+            <span class="live-badge">● LIVE</span>
+          </div>
+
+          <div class="chart-legend">
+            <span><i class="legend-income"></i> Income</span>
+            <span><i class="legend-expense"></i> Expenses</span>
+          </div>
+
+          <div class="chart" id="chart"
+               role="img" aria-label="Income and expense chart">
+          </div>
+          <p class="chart-note" id="chart-note">
+            Your monthly overview will appear here.
+          </p>
+        </article>
+
+        <article class="panel form-panel" id="add-transaction">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">QUICK ACTION</p>
+              <h3>New transaction</h3>
+            </div>
+            <span class="stat-icon purple">＋</span>
+          </div>
+
+          <form id="transaction-form">
+            <label for="description">Description</label>
+            <input id="description" name="description"
+                   placeholder="e.g. Monthly salary"
+                   maxlength="80" required>
+
+            <label for="amount">Amount (€)</label>
+            <input id="amount" name="amount" type="number"
+                   placeholder="0.00" min="0.01"
+                   max="100000000" step="0.01" required>
+
+            <label for="type">Transaction type</label>
+            <select id="type" name="type">
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <option>Salary</option>
+              <option>Freelance</option>
+              <option>Food</option>
+              <option>Transport</option>
+              <option>Shopping</option>
+              <option>Bills</option>
+              <option>Entertainment</option>
+              <option>Other</option>
+            </select>
+
+            <button class="primary-button" type="submit">
+              <span>＋</span> Add transaction
+            </button>
+            <p class="form-message" id="form-message"
+               role="status" aria-live="polite"></p>
+          </form>
+        </article>
+      </section>
+
+      <section class="panel transactions-panel" id="transactions">
+        <div class="panel-heading transactions-heading">
+          <div>
+            <p class="eyebrow">TRANSACTION HISTORY</p>
+            <h3>Recent activity</h3>
+          </div>
+          <label class="filter-label" for="filter">
+            <span class="visually-hidden">Filter transactions</span>
+            <select id="filter">
+              <option value="all">All activity</option>
+              <option value="income">Income only</option>
+              <option value="expense">Expenses only</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="transaction-list" id="transaction-list">
+          <p class="empty-state">Loading transactions...</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>FINOVA © 2026</span>
+        <span>Designed for smarter finances <span class="accent">✳</span></span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
